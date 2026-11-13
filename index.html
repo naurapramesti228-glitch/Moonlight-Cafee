@@ -1,0 +1,715 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moonlight Cafe | A Little Taste of Happiness</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #fbf9ff;
+    color: #514263;
+}
+
+/* NAVBAR */
+header {
+    background: #fff;
+    padding: 18px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 3px 15px rgba(110,80,140,.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #9575c9;
+    letter-spacing: 1px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #514263;
+    margin-left: 25px;
+    font-weight: 500;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: #a17bd2;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 27px;
+    cursor: pointer;
+    color: #9575c9;
+}
+
+/* HERO */
+.hero {
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    padding: 70px 8%;
+    background:
+    linear-gradient(90deg, rgba(43,27,63,.75), rgba(43,27,63,.1)),
+    url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1600&q=85');
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.hero-content {
+    max-width: 600px;
+    animation: slideUp 1.2s ease;
+}
+
+.hero h1 {
+    font-size: clamp(40px, 6vw, 65px);
+    margin-bottom: 18px;
+}
+
+.hero h1 span {
+    color: #e4caff;
+}
+
+.hero p {
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    background: #a786d2;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: #8261b2;
+    transform: translateY(-4px);
+}
+
+/* GENERAL SECTION */
+section {
+    padding: 75px 8%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title h2 {
+    font-size: 35px;
+    color: #8060aa;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: #8d819a;
+    line-height: 1.7;
+}
+
+/* ABOUT */
+.about {
+    display: flex;
+    align-items: center;
+    gap: 45px;
+}
+
+.about img {
+    width: 48%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 10px 10px 0 #e9dcf8;
+}
+
+.about-text {
+    flex: 1;
+    line-height: 1.9;
+}
+
+.about-text h2 {
+    font-size: 32px;
+    color: #8060aa;
+    margin-bottom: 15px;
+}
+
+.about-text p {
+    margin-bottom: 12px;
+}
+
+/* MENU */
+.menu {
+    background: #f3edfb;
+}
+
+.menu-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.menu-card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(100,70,130,.09);
+    transition: .4s;
+}
+
+.menu-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(100,70,130,.17);
+}
+
+.menu-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: .5s;
+}
+
+.menu-card:hover img {
+    transform: scale(1.07);
+}
+
+.menu-info {
+    padding: 20px;
+}
+
+.menu-info h3 {
+    color: #70518f;
+    margin-bottom: 9px;
+}
+
+.menu-info p {
+    color: #92859e;
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 45px;
+}
+
+.price {
+    color: #9b76c9;
+    font-size: 19px;
+    font-weight: bold;
+    margin-top: 13px;
+}
+
+/* PROMO */
+.promo {
+    text-align: center;
+    background: linear-gradient(135deg, #a98bd0, #d0b9ed);
+    color: white;
+    padding: 70px 20px;
+}
+
+.promo h2 {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.promo p {
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+.promo .btn {
+    background: white;
+    color: #8060aa;
+}
+
+.promo .btn:hover {
+    background: #f3edfb;
+}
+
+/* REGISTRATION */
+.register {
+    background: #f8f4fd;
+}
+
+.register-box {
+    max-width: 550px;
+    margin: auto;
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 5px 25px rgba(100,70,130,.1);
+}
+
+.register-box input,
+.register-box select,
+.register-box textarea {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    border: 1px solid #ded1ef;
+    border-radius: 9px;
+    font-family: inherit;
+    outline: none;
+    background: #fdfbff;
+}
+
+.register-box input:focus,
+.register-box select:focus,
+.register-box textarea:focus {
+    border-color: #a786d2;
+}
+
+.register-box button {
+    width: 100%;
+    margin-top: 12px;
+}
+
+/* CONTACT */
+.contact {
+    text-align: center;
+    line-height: 2.2;
+}
+
+.contact h2 {
+    color: #8060aa;
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+/* FOOTER */
+footer {
+    background: #6e548d;
+    color: white;
+    text-align: center;
+    padding: 28px;
+    line-height: 1.8;
+}
+
+footer span {
+    color: #eadbff;
+}
+
+/* ANIMATION */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(45px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+.hero h1 {
+    animation: float 4s ease-in-out infinite;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: all .8s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media(max-width: 850px) {
+    .menu-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about {
+        flex-direction: column;
+    }
+
+    .about img {
+        width: 100%;
+    }
+}
+
+@media(max-width: 600px) {
+    header {
+        padding: 16px 5%;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    nav {
+        display: none;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 5px 10px rgba(0,0,0,.08);
+    }
+
+    nav.active {
+        display: flex;
+        flex-direction: column;
+    }
+
+    nav a {
+        margin: 10px 0;
+    }
+
+    .menu-container {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 55px 6%;
+    }
+
+    .register-box {
+        padding: 23px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header>
+    <div class="logo">☾ Moonlight Cafe</div>
+
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <nav id="navbar">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#menu">Menu</a>
+        <a href="#register">Registration</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero" id="home">
+    <div class="hero-content">
+        <h1>Welcome to <span>Moonlight Cafe</span></h1>
+
+        <p>
+            A little taste of happiness in every cup.
+            Nikmati kopi favoritmu dengan suasana nyaman,
+            hangat, dan penuh cerita bersama Moonlight Cafe.
+        </p>
+
+        <a href="#menu" class="btn">Explore Our Menu</a>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="reveal">
+    <div class="about">
+
+        <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=900&q=85"
+        alt="Moonlight Cafe">
+
+        <div class="about-text">
+            <h2>About Moonlight Cafe ✨</h2>
+
+            <p>
+                Moonlight Cafe adalah tempat yang menghadirkan
+                pengalaman menikmati kopi dengan suasana
+                yang nyaman, aesthetic, dan menyenangkan.
+            </p>
+
+            <p>
+                Kami menyediakan berbagai pilihan minuman
+                dan makanan dengan cita rasa istimewa.
+                Cocok untuk berkumpul bersama teman,
+                belajar, bekerja, maupun bersantai.
+            </p>
+
+            <p>
+                Setiap sudut Moonlight Cafe dibuat untuk
+                memberikan pengalaman yang berkesan.
+            </p>
+
+            <a href="#register" class="btn">Join Our Cafe</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+
+    <div class="section-title reveal">
+        <h2>Our Special Menu ☕</h2>
+        <p>Temukan menu favoritmu di Moonlight Cafe</p>
+    </div>
+
+    <div class="menu-container">
+
+        <div class="menu-card reveal">
+            <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=700&q=80" alt="Matcha Latte">
+            <div class="menu-info">
+                <h3>Matcha Latte</h3>
+                <p>Perpaduan matcha premium dengan susu creamy.</p>
+                <div class="price">Rp28.000</div>
+            </div>
+        </div>
+
+        <div class="menu-card reveal">
+            <img src="https://images.unsplash.com/photo-1461988625982-7e46a099bf4f?auto=format&fit=crop&w=700&q=80" alt="Iced Coffee">
+            <div class="menu-info">
+                <h3>Moonlight Coffee</h3>
+                <p>Kopi spesial dengan rasa lembut dan aroma khas.</p>
+                <div class="price">Rp25.000</div>
+            </div>
+        </div>
+
+        <div class="menu-card reveal">
+            <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=700&q=80" alt="Cafe Latte">
+            <div class="menu-info">
+                <h3>Cafe Latte</h3>
+                <p>Espresso dengan susu segar yang lembut.</p>
+                <div class="price">Rp27.000</div>
+            </div>
+        </div>
+
+        <div class="menu-card reveal">
+            <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=700&q=80" alt="Americano">
+            <div class="menu-info">
+                <h3>Iced Americano</h3>
+                <p>Kopi hitam segar dengan rasa yang khas.</p>
+                <div class="price">Rp20.000</div>
+            </div>
+        </div>
+
+        <div class="menu-card reveal">
+            <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=700&q=80" alt="Strawberry Milk">
+            <div class="menu-info">
+                <h3>Oreo Chocolatte Milkshake</h3>
+                <p>Susu creamy dengan rasa Oreo Chocolatte manis.</p>
+                <div class="price">Rp23.000</div>
+            </div>
+        </div>
+
+        <div class="menu-card reveal">
+            <img src="https://images.unsplash.com/photo-1541658016709-82535e94bc69?auto=format&fit=crop&w=700&q=80" alt="Chocolate">
+            <div class="menu-info">
+                <h3>Chocolate Cream</h3>
+                <p>Minuman cokelat dengan topping cream lembut.</p>
+                <div class="price">Rp25.000</div>
+            </div>
+        </div>
+
+        <div class="menu-card reveal">
+            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=80" alt="Cake">
+            <div class="menu-info">
+                </h3>Chocolate Drip Cake</h3>
+                <p>Kue lembut dengan topping coklat manis.</p>
+                <div class="price">Rp30.000</div>
+            </div>
+        </div>
+
+        <div class="menu-card reveal">
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=700&q=80" alt="Croissant">
+            <div class="menu-info">
+                <h3>Butter Croissant</h3>
+                <p>Pastry renyah dengan aroma butter.</p>
+                <div class="price">Rp18.000</div>
+            </div>
+        </div>
+
+        <div class="menu-card reveal">
+            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=700&q=80" alt="Donut">
+            <div class="menu-info">
+                <h3>Sweet Donut</h3>
+                <p>Donat manis dengan berbagai pilihan topping.</p>
+                <div class="price">Rp15.000</div>
+            </div>
+        </div>
+
+        <div class="menu-card reveal">
+            <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=700&q=80" alt="Sandwich">
+            <div class="menu-info">
+                <h3>Chicken Sandwich</h3>
+                <p>Roti isi ayam dan sayuran yang lezat.</p>
+                <div class="price">Rp30.000</div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- PROMO -->
+<div class="promo reveal">
+    <h2>Make Your Day More Special 💜</h2>
+
+    <p>
+        A cup of coffee, a little happiness.
+        <br>
+        Nikmati waktu terbaikmu hanya di Moonlight Cafe.
+    </p>
+
+    <a href="#register" class="btn">Register Now</a>
+</div>
+
+<!-- REGISTRATION -->
+<section class="register" id="register">
+
+    <div class="section-title">
+        <h2>Registration Form</h2>
+        <p>Daftarkan dirimu dan jadilah bagian dari Moonlight Cafe!</p>
+    </div>
+
+    <div class="register-box">
+
+        <form id="registrationForm">
+
+            <input type="text" id="nama"
+            placeholder="Nama Lengkap" required>
+
+            <input type="tel" id="telepon"
+            placeholder="Nomor WhatsApp" required>
+
+            <input type="email" id="email"
+            placeholder="Alamat Email" required>
+
+            <select id="pilihan" required>
+                <option value="">Pilih Keperluan</option>
+                <option value="Pendaftaran Member">Pendaftaran Member</option>
+                <option value="Pemesanan Menu">Pemesanan Menu</option>
+                <option value="Informasi Cafe">Informasi Cafe</option>
+                <option value="Reservasi Tempat">Reservasi Tempat</option>
+            </select>
+
+            <textarea id="pesan" rows="4"
+            placeholder="Pesan tambahan (opsional)"></textarea>
+
+            <button type="submit" class="btn">
+                Daftar Melalui WhatsApp
+            </button>
+
+        </form>
+
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+
+    <h2>Contact Us 💌</h2>
+
+    <p>📍 Alamat: Palembang, Sumatera Selatan</p>
+    <p>📱 WhatsApp: 0887-0698-8558</p>
+    <p>📧 Email: moonlightcafe@gmail.com</p>
+    <p>🕒 Jam Buka: 09.00 - 22.00 WIB</p>
+
+    <p>Instagram: @moonlightcafe</p>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 <span>Moonlight Cafe</span>. All Rights Reserved.</p>
+    <p>A Little Taste of Happiness ✨</p>
+</footer>
+
+<script>
+
+// NAVBAR
+function toggleMenu() {
+    document.getElementById("navbar").classList.toggle("active");
+}
+
+// TUTUP MENU SETELAH DIKLIK
+document.querySelectorAll("#navbar a").forEach(link => {
+    link.addEventListener("click", () => {
+        document.getElementById("navbar").classList.remove("active");
+    });
+});
+
+// ANIMASI SCROLL
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+
+    });
+
+}, {
+    threshold: 0.15
+});
+
+document.querySelectorAll(".reveal").forEach(element => {
+    observer.observe(element);
+});
+
+// PENDAFTARAN WHATSAPP
+document.getElementById("registrationForm").addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    const nama = document.getElementById("nama").value;
+    const telepon = document.getElementById("telepon").value;
+    const email = document.getElementById("email").value;
+    const pilihan = document.getElementById("pilihan").value;
+    const pesan = document.getElementById("pesan").value;
+
+    // GANTI DENGAN NOMOR WHATSAPP KAMU
+    const nomorWA = "6288706988558";
+
+    const isiPesan =
+        "Halo Moonlight Cafe! Saya ingin mendaftar.%0A%0A" +
+        "Nama: " + encodeURIComponent(nama) + "%0A" +
+        "Nomor WhatsApp: " + encodeURIComponent(telepon) + "%0A" +
+        "Email: " + encodeURIComponent(email) + "%0A" +
+        "Keperluan: " + encodeURIComponent(pilihan) + "%0A" +
+        "Pesan: " + encodeURIComponent(pesan);
+
+    const linkWA = "https://wa.me/" + nomorWA + "?text=" + isiPesan;
+
+    window.open(linkWA, "_blank");
+
+});
+
+</script>
+
+</body>
+</html>
